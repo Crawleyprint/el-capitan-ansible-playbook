@@ -17,7 +17,6 @@ homebrew_packages:
   - name: libgpg-error
   - name: libtasn1
   - name: libtool
-  - name: macvim
   - name: msgpack
   - name: nettle
   - name: ninja
@@ -51,6 +50,7 @@ homebrew_casks:
   - name: karabiner
   - name: lastpass
   - name: mou
+  - name: macvim
   - name: sequel-pro
   - name: sketch
   - name: skype

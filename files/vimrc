@@ -1,0 +1,328 @@
+set nocompatible              " be iMproved, required
+set shell=/bin/bash
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'junegunn/vim-easy-align'
+
+" SILVER SURFER, SEARCH PLUGIN
+Plugin 'rking/ag.vim'
+
+" UNDO MANAGER
+Plugin 'vim-scripts/Gundo'
+
+" HTML
+Plugin 'mattn/emmet-vim'
+Plugin 'juanpabloaj/vim-istanbul'
+
+" JAVASCRIPT
+Plugin 'moll/vim-node'
+Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'ahayman/vim-nodejs-complete'
+Plugin 'mxw/vim-jsx'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'claco/jasmine.vim'
+Plugin 'JulesWang/css.vim'
+Plugin 'groenewege/vim-less'
+Plugin 'heavenshell/vim-jsdoc'
+
+" SYNTAX CHECKERS
+Plugin 'walm/jshint.vim'
+Plugin 'scrooloose/syntastic'
+
+" CODE COMPLETION
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
+
+Plugin 'scrooloose/nerdcommenter'
+
+" LOOK AND FEEL
+Plugin 'flazz/vim-colorschemes'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'ap/vim-css-color'
+
+" PROJECT NAVIGATION
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+
+" cosmetics
+Plugin 'godlygeek/tabular'
+
+" writing
+Plugin 'reedes/vim-pencil'
+Plugin 'junegunn/goyo.vim'
+
+call vundle#end()
+
+"********************
+""Syntax and colors                                                           t
+"********************
+
+filetype plugin on
+syntax enable
+
+" Set terminal to 256 colors
+
+" set colorscheme
+set t_Co=256
+set background=dark
+
+silent! colorscheme badwolf
+
+if has('gui_running')
+  " set gui font
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+  colorscheme badwolf
+endif
+if &diff
+    colorscheme github
+endif
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+set lazyredraw
+
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['html', 'json'] }
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_check_on_open=1
+
+" turn on suggestion list
+set wildmenu
+set wildmode=list:longest
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+" line numbers and indentation
+set mouse=a
+set mousehide
+set colorcolumn=80
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set autoindent
+set smartindent
+set ruler
+" refresh buffer if file was change from outside
+set autoread
+
+" turn off sound alerts
+set visualbell
+
+" better search options
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
+set showmatch
+set hlsearch
+
+" basic options
+set encoding=utf-8
+set scrolloff=3
+set hidden
+set copyindent
+set visualbell
+set cursorline
+set ttyfast
+if !has('nvim')
+set ttymouse=xterm
+endif
+set backspace=indent,eol,start
+set laststatus=2
+set virtualedit=all
+set nobackup " disable swapping
+set noswapfile " disable swapping
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set fillchars+=vert:\ | set nowrap
+" how many tenths of a second to blink when matching brackets
+set mat=2
+set pt=<f12>
+
+" set normal split behavior
+set splitbelow
+set splitright
+hi vertsplit guibg=#cfcfcf
+hi StatusLineNC guibg=#cfcfcf
+
+" change mapleader
+let mapleader = ","
+
+" tweak cursor line
+augroup cursorline
+  au!
+  au vimenter,winenter,bufwinenter * setlocal cursorline
+  au winleave * setlocal nocursorline
+augroup end
+
+
+nnoremap K i<CR><Esc>
+
+
+" Vim doesn't set a FileType for JSON, so we'll do it manually:
+autocmd BufNewFile,BufReadPost *.json setlocal filetype=javascript.json
+autocmd BufNewFile,BufReadPost *.less.css setlocal filetype=less
+
+" Requires that you have Python v2.6+ installed. (Most *nix systems do.)
+autocmd FileType json let b:vimpipe_command="python -m json.tool"
+
+" Strip white space at the end of line
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Set syntax to jst for ejs files
+autocmd BufNewFile,BufRead *.ejs set filetype=jst<Paste>
+
+" Markdown
+autocmd BufRead *.md set ft=markdown
+
+"***************
+""Misc remaps
+"***************
+
+"" remap : to ;
+nnoremap ; :
+inoremap jj <ESC>
+
+" Taming search
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <C-i> /\v
+vnoremap <C-i> /\v
+
+
+" fix vim's idiotic indentation
+vnoremap > ><cr>gv
+vnoremap < <<cr>gv
+
+"**************
+""Movement
+"**************
+"
+"" navigating the splits
+nnoremap <C-h> <C-w>h
+if has('nvim')
+  nnoremap <bs> <C-w>h
+endif
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" disable arrow keys for everything
+" but insert mode
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
+
+" show/hide
+nnoremap <silent> <F1> :NERDTreeToggle<CR>
+" show hidden files
+let NERDTreeShowHidden = 1
+let g:NERDTreeWinPos = "right"
+
+" set ctrlp trigger
+nnoremap <c-t> :CtrlP<CR>
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_max_files=0
+endif
+
+let g:ctrlp_working_path_mode = 0
+
+" Set zen coding abbreviation expand key
+let g:user_emmet_expandabbr_key = '<C-o>'
+let g:user_emmet_mode = 'a'
+let g:user_emmet_install_global = 1
+
+set omnifunc=syntaxcomplete#Complete
+
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline_inactive_collapse=1
+let g:airline_theme='base16'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline#extensions#tabline#show_close_button = 1
+let g:airline#extensions#tabline#close_symbol = 'X'
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" LEADER SHORTCUTS
+
+" focus nerdtree
+nmap <silent> <leader>m :NERDTreeFocus<CR>
+
+" Dismiss search highlight
+nnoremap <leader><space> :noh<cr>
+
+" Go to definition in JavaScript (or, at least, die tryin')
+nnoremap <leader>n :TernDef<cr>
+
+" Open the allmighty Gundo
+nnoremap <leader>g :GundoToggle<CR>
+
+" Toggle NerdTree
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+" These are the tweaks I apply to YCM's config, you don't need them but they might help.
+" YCM gives you popups and splits by default that some people might not like, so these should tidy it up a bit for you.
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+let g:used_javascript_libs = 'angularjs,jquery,react'
+
+set completeopt-=preview "BreakLine: Return TRUE if in the middle of {} or () in INSERT mode
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd,md call pencil#init()
+  autocmd FileType text            call pencil#init()
+augroup END
+
+set shortmess=a

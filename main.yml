@@ -3,28 +3,59 @@
   user: mladen
   connection: local
 
-  vars_files: 
+  vars_files:
     - vars/main.yml
 
   tasks:
     - name: Add homebrew taps
-      homebrew_tap: 
+      homebrew_tap:
         name: "{{item.name}}"
         state: present
       with_items: homebrew_taps
       tags: homebrew
 
     - name: Install Homebrew Packages
-      homebrew: 
+      homebrew:
         name: "{{item.name}}"
         state: present
         update_homebrew: yes
       with_items: homebrew_packages
       tags: homebrew
 
+    - name: Install macvim
+      homebrew:
+         name: macvim
+         install_options: --with-override-system-vim
+         state: latest
+      tags: macvim
+
     - name: Install Homebrew Cask
-      homebrew_cask: 
+      homebrew_cask:
         name: "{{item.name}}"
         state: present
       with_items: homebrew_casks
       tags: homebrew_cask
+
+    - name: Copy vimrc
+      copy:
+        src: files/vimrc
+        dest: ~/.vimrc
+      tags: vim
+
+    - name: Ensure vundle folder exists
+      file:
+        path: ~/.vim/bundle
+        state: directory
+      tags: vim
+
+    - name: Clone vundle
+      git:
+        repo: https://github.com/VundleVim/Vundle.vim.git
+        dest: ~/.vim/bundle/Vundle.vim
+        update: true
+        force: yes
+      tags: vim
+
+    - name: Start vim for the first time
+      command: vim +PluginInstall +qall
+      tags: vim
