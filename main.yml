@@ -12,10 +12,19 @@
         name: "{{item.name}}"
         state: present
       with_items: homebrew_taps
+      tags: homebrew
 
-    - name: Install Homebrew
+    - name: Install Homebrew Packages
       homebrew: 
         name: "{{item.name}}"
         state: present
         update_homebrew: yes
       with_items: homebrew_packages
+      tags: homebrew
+
+    - name: Install Homebrew Cask
+      homebrew_cask: 
+        name: "{{item.name}}"
+        state: present
+      with_items: homebrew_casks
+      tags: homebrew_cask

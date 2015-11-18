@@ -37,3 +37,27 @@ homebrew_packages:
 
 homebrew_taps:
   - name: caskroom/cask
+
+homebrew_casks:
+  - name: adium
+  - name: android-file-transfer
+  - name: colloquy
+  - name: dropbox
+  - name: firefox
+  - name: google-chrome
+  - name: google-drive
+  - name: hammerspoon
+  - name: iterm2
+  - name: karabiner
+  - name: lastpass
+  - name: mou
+  - name: sequel-pro
+  - name: sketch
+  - name: skype
+  - name: slack
+  - name: spotify
+  - name: transmission
+  - name: tunnelbear
+  - name: vagrant-manager
+  - name: virtualbox
+  - name: vlc
