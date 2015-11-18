@@ -1,0 +1,39 @@
+---
+
+homebrew_packages:
+  - name: android-sdk
+  - name: autoconf
+  - name: automake
+  - name: brew-cask
+  - name: cmake
+  - name: cowsay
+  - name: cscope
+  - name: gdbm
+  - name: gettext
+  - name: git
+  - name: gmp
+  - name: gnutls
+  - name: libgcrypt
+  - name: libgpg-error
+  - name: libtasn1
+  - name: libtool
+  - name: macvim
+  - name: msgpack
+  - name: nettle
+  - name: ninja
+  - name: openssl
+  - name: pcre
+  - name: pkg-config
+  - name: python
+  - name: rbenv
+  - name: readline
+  - name: scons
+  - name: the_silver_searcher
+  - name: tig
+  - name: wget
+  - name: xz
+  - name: zsh
+  - name: zsh-completions
+
+homebrew_taps:
+  - name: caskroom/cask
