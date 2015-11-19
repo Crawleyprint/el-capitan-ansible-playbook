@@ -1,0 +1,7 @@
+---
+
+- name: Copy git configuration
+  copy:
+    src: files/gitconfig
+    dest: ~/.gitconfig
+  tags: dotfiles

@@ -30,6 +30,7 @@ homebrew_packages:
   - name: the_silver_searcher
   - name: tig
   - name: vagrant
+  - name: vim
   - name: wget
   - name: xz
   - name: zsh
