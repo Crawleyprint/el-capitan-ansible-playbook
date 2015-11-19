@@ -20,6 +20,19 @@
     force: yes
   tags: vim
 
+- name: Install js tern dependencies
+  command: source /Users/mladen/.zshrc && npm install
+  args:
+    executable: /bin/zsh
+    chdir: /Users/mladen/.vim/bundle/tern_for_vim/
+  tags: vim
+
+- name: Compile YouCompleteMe
+  command: ./install.sh
+  args:
+    chdir: /Users/mladen/.vim/bundle/YouCompleteMe/
+  tags: latest
+
 - name: Start vim for the first time
   command: vim +PluginInstall +qall
   tags: vim

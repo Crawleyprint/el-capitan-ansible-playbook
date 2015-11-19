@@ -1,0 +1,13 @@
+---
+
+- name: Invoke non-sudo commands
+  command: "{{ item.name }}"
+  with_items: osx_non_sudo
+  tags: osx
+
+- name: Invoke commands that need sudo
+  become: yes
+  command: "{{ item.name }}"
+  with_items: osx_with_sudo
+  tags: osx
+
