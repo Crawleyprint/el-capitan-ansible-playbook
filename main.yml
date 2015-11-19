@@ -42,6 +42,12 @@
         dest: ~/.vimrc
       tags: vim
 
+    - name: Copy git configuration
+      copy:
+        src: files/gitconfig
+        dest: ~/.gitconfig
+      tags: dotfiles
+
     - name: Ensure vundle folder exists
       file:
         path: ~/.vim/bundle
@@ -59,3 +65,4 @@
     - name: Start vim for the first time
       command: vim +PluginInstall +qall
       tags: vim
+
