@@ -29,6 +29,7 @@ homebrew_packages:
   - name: scons
   - name: the_silver_searcher
   - name: tig
+  - name: vagrant
   - name: wget
   - name: xz
   - name: zsh
@@ -58,6 +59,7 @@ homebrew_casks:
   - name: spotify
   - name: transmission
   - name: tunnelbear
+  - name: vagrant
   - name: vagrant-manager
   - name: virtualbox
   - name: vlc
