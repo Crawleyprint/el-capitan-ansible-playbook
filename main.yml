@@ -10,4 +10,5 @@
     - include: tasks/install-apps.yml
     - include: tasks/dotfiles.yml
     - include: tasks/vim-configuration.yml
+    - include: tasks/node.yml
 

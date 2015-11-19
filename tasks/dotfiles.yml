@@ -5,3 +5,9 @@
     src: files/gitconfig
     dest: ~/.gitconfig
   tags: dotfiles
+
+- name: Copy zshrc
+  copy:
+    src: files/zshrc
+    dest: ~/.zshrc
+  tags: dotfiles

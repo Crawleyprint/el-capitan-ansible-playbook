@@ -1,0 +1,24 @@
+---
+
+- name: Clone nvm
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: ~/.nvm
+    update: true
+    force: yes
+    version: v0.29.0
+  tags: node
+
+- name: Source nvm
+  sudo: no
+  shell: source /Users/mladen/.nvm/nvm.sh
+  args:
+     executable: /bin/bash
+  tags: node
+
+- name: Source zshrc
+  sudo: no
+  shell: source /Users/mladen/.zshrc
+  args:
+     executable: /bin/zsh
+  tags: node
