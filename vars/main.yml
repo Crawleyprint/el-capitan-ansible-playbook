@@ -2,6 +2,7 @@
 
 homebrew_packages:
   - name: android-sdk
+  - name: antigen
   - name: autoconf
   - name: automake
   - name: brew-cask
@@ -20,6 +21,7 @@ homebrew_packages:
   - name: msgpack
   - name: nettle
   - name: ninja
+  - name: node
   - name: openssl
   - name: pcre
   - name: pkg-config
@@ -59,6 +61,7 @@ homebrew_casks:
   - name: spotify
   - name: transmission
   - name: tunnelbear
+  - name: tunnelblick
   - name: vagrant
   - name: vagrant-manager
   - name: virtualbox
