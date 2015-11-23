@@ -31,3 +31,8 @@
   changed = red
   untracked = cyan
 
+[diff]
+  tool = vimdiff
+
+[difftool]
+  prompt = false
