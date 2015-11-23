@@ -96,6 +96,9 @@ osx_non_sudo:
   - name: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
   - name: defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
   - name: defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+# Turn on three finger drag
+  - name: defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+  - name: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 
 # Increase sound quality for Bluetooth headphones/headsets
   - name: defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
@@ -245,7 +248,7 @@ osx_non_sudo:
 # Make Dock icons of hidden applications translucent
   - name: defaults write com.apple.dock showhidden -bool true
 # Disable the Launchpad gesture (pinch with thumb and three fingers)
-#defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
+  - name: defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # Reset Launchpad, but keep the desktop wallpaper intact
   - name: find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
@@ -274,7 +277,7 @@ osx_non_sudo:
   - name: defaults write com.apple.dock wvous-tl-corner -int 10
   - name: defaults write com.apple.dock wvous-tl-modifier -int 0
 # Top right screen corner → Desktop
-  - name: defaults write com.apple.dock wvous-tr-corner -int 0
+  - name: defaults write com.apple.dock wvous-tr-corner -int 4
   - name: defaults write com.apple.dock wvous-tr-modifier -int 0
 # Bottom left screen corner → Start screen saver
   - name: defaults write com.apple.dock wvous-bl-corner -int 5
