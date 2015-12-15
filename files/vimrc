@@ -119,6 +119,10 @@ set expandtab
 set autoindent
 set smartindent
 set ruler
+" setting both number and relative number will
+" yield a combo of those two
+set relativenumber
+set number
 " refresh buffer if file was change from outside
 set autoread
 
