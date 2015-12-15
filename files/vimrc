@@ -10,6 +10,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'junegunn/vim-easy-align'
 
+" Git
+Plugin 'tpope/vim-fugitive'
+
 " SILVER SURFER, SEARCH PLUGIN
 Plugin 'rking/ag.vim'
 
