@@ -44,7 +44,6 @@ homebrew_taps:
 homebrew_casks:
   - name: adium
   - name: android-file-transfer
-  - name: colloquy
   - name: dropbox
   - name: firefox
   - name: google-chrome
@@ -53,6 +52,7 @@ homebrew_casks:
   - name: iterm2
   - name: karabiner
   - name: lastpass
+  - name: limechat
   - name: mou
   - name: macvim
   - name: sequel-pro
